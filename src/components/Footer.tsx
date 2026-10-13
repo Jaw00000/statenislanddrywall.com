@@ -95,6 +95,7 @@ export default function Footer() {
                 </li>
               ))}
               <li><button onClick={() => scrollToSection('#calculator')} className="hover:text-champagne-300 transition-colors">Cost Calculator</button></li>
+              <li><a href="/generated-samples" className="hover:text-champagne-300 transition-colors">Service Gallery</a></li>
             </ul>
           </div>
         </div>

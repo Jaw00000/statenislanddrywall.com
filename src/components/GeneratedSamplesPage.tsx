@@ -33,10 +33,10 @@ export default function GeneratedSamplesPage() {
   return (
     <main className="min-h-screen bg-ink-950 px-5 py-12 text-white sm:px-8 lg:px-12">
       <div className="mx-auto max-w-6xl">
-        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Private review gallery</p>
-        <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">Generated service image samples</h1>
+        <p className="mb-3 text-xs font-semibold uppercase tracking-[0.28em] text-gold-400">Service gallery</p>
+        <h1 className="max-w-3xl text-3xl font-semibold tracking-tight sm:text-5xl">Drywall project gallery</h1>
         <p className="mt-5 max-w-2xl text-sm leading-7 text-white/65 sm:text-base">
-          These are AI-generated concept images for review only. They are not photographs of completed work and are not presented as a contractor&apos;s portfolio.
+          Visual examples of drywall processes and finished surfaces. These images are generated illustrations, not photographs of completed contractor projects.
         </p>
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
           {samples.map((sample) => (
@@ -52,7 +52,7 @@ export default function GeneratedSamplesPage() {
           ))}
         </div>
         <p className="mt-10 border-t border-white/10 pt-5 text-xs leading-5 text-white/45">
-          Review-only route. These samples are intentionally not linked from the public site.
+          These generated visuals are provided for service illustration only. Replace them with verified project photography before using them as portfolio evidence.
         </p>
       </div>
     </main>

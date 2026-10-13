@@ -1,9 +1,9 @@
-import { ShieldCheck, FileCheck, Wind } from 'lucide-react';
+import { ClipboardCheck, FileCheck, Wind } from 'lucide-react';
 
 const BADGES = [
-  { icon: FileCheck, label: 'NYC DOB & HIC Licensed' },
-  { icon: ShieldCheck, label: '$2M General Liability Insured' },
-  { icon: Wind, label: 'HEPA Dustless Certified' },
+  { icon: FileCheck, label: 'Scope reviewed before referral' },
+  { icon: ClipboardCheck, label: 'Contractor credentials verified directly' },
+  { icon: Wind, label: 'Dust-conscious work options' },
 ];
 
 export default function TrustBanner() {

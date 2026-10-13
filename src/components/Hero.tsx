@@ -2,7 +2,6 @@ import { useState } from 'react';
 import {
   Calculator,
   Star,
-  ShieldCheck,
   Wind,
   Layers,
   User,
@@ -17,16 +16,16 @@ import {
 } from 'lucide-react';
 
 const STATS = [
-  { value: '1,200+', label: 'Projects Completed' },
-  { value: '15', label: 'Years on Staten Island' },
-  { value: 'Level 5', label: 'Finishing Certified' },
-  { value: '100%', label: 'HEPA Dustless' },
+  { value: '7', label: 'Service Guides' },
+  { value: '8', label: 'Areas Listed' },
+  { value: 'Level 5', label: 'Finish Guidance' },
+  { value: 'Local', label: 'Lead Referral Site' },
 ];
 
 const BADGES = [
-  { icon: Wind, label: 'HEPA Dustless Sanding' },
-  { icon: Layers, label: 'Level 5 Finishes' },
-  { icon: ShieldCheck, label: 'Licensed & Insured' },
+  { icon: Wind, label: 'Dust-conscious sanding options' },
+  { icon: Layers, label: 'Level 5 finish guidance' },
+  { icon: Star, label: 'Independent contractor referral' },
 ];
 
 const ZIP_PREFIXES = ['10301', '10302', '10303', '10304', '10305', '10306', '10307', '10308', '10309', '10310', '10311', '10312', '10314'];
@@ -98,7 +97,7 @@ export default function Hero() {
             <div className="flex flex-wrap items-center gap-3 mb-8 animate-fade-in">
               <div className="flex items-center gap-1.5 rounded-full border border-champagne-400/30 bg-champagne-400/5 px-4 py-1.5">
                 <Star className="h-3.5 w-3.5 text-champagne-400 fill-champagne-400" />
-                <span className="text-xs font-medium text-champagne-200">Trusted by 1,200+ Staten Island Homeowners</span>
+                <span className="text-xs font-medium text-champagne-200">Local drywall project information and referrals</span>
               </div>
             </div>
 
@@ -113,7 +112,7 @@ export default function Hero() {
 
             {/* Subheadline */}
             <p className="mt-6 text-base sm:text-lg text-steel-300 leading-relaxed max-w-2xl animate-fade-up" style={{ animationDelay: '0.15s' }}>
-              HEPA dustless sanding that keeps your home clean. High-end residential renovations with museum-grade surface quality. Commercial metal framing and fire-rated assemblies built to code.
+              Compare drywall services, understand the work involved, and request a referral to an independent contractor serving Staten Island. Credentials, pricing, availability, and the final scope are confirmed directly before work is booked.
             </p>
 
             {/* Badge pills */}

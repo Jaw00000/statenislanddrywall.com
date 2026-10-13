@@ -1,4 +1,4 @@
-import { Hammer, Phone, Mail, MapPin, Clock, Star } from 'lucide-react';
+import { Hammer, Phone, Mail, MapPin, Clock } from 'lucide-react';
 import { SERVICE_TIERS } from '@/data/services';
 import { navigateToService, scrollToSection } from '@/lib/navigation';
 
@@ -50,13 +50,10 @@ export default function Footer() {
               </div>
             </div>
             <p className="text-sm text-steel-400 leading-relaxed max-w-md">
-              Elite drywall installation, Level 5 plaster-grade finishes, acoustic soundproofing, and precision restoration. Serving homeowners and commercial clients across all of Staten Island.
+              A local marketing and lead-generation website for drywall services in Staten Island. Contractor availability, pricing, licensing, and project details are confirmed directly with the service provider before work is booked.
             </p>
-            <div className="flex items-center gap-1 mt-4">
-              {[...Array(5)].map((_, i) => (
-                <Star key={i} className="h-4 w-4 text-champagne-400 fill-champagne-400" />
-              ))}
-              <span className="text-xs text-steel-400 ml-2">5.0 — 280+ reviews</span>
+            <div className="mt-4 rounded-lg border border-champagne-400/20 bg-champagne-400/5 p-3 text-xs leading-relaxed text-steel-300">
+              <strong className="text-champagne-300">Important:</strong> This website is not the contractor and does not perform construction work. It is a marketing platform that may connect visitors with an independent local contractor. Verify the contractor&apos;s identity, insurance, licenses, written scope, and contract before hiring.
             </div>
           </div>
 
@@ -107,8 +104,8 @@ export default function Footer() {
           <p className="text-xs text-steel-500">
             © {new Date().getFullYear()} Staten Island Drywall. All rights reserved.
           </p>
-          <p className="text-xs text-steel-500">
-            Licensed & Insured — NYC Dept. of Buildings
+          <p className="text-xs text-steel-500 text-center sm:text-right">
+            Marketing site only — no contractor license or insurance is claimed here. Verify credentials before hiring.
           </p>
         </div>
       </div>

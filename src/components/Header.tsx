@@ -45,7 +45,7 @@ export default function Header() {
                 </div>
                 <div className="flex items-center gap-1 text-[10px] uppercase tracking-wider text-steel-300">
                   <BadgeCheck className="h-3 w-3 text-champagne-400" />
-                  Staten Island's Premier Drywall & Finishing Experts
+                  Local drywall lead-generation site
                 </div>
               </div>
             </div>

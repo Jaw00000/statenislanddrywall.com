@@ -37,7 +37,20 @@ const neighborhoodDetails = [
   { slug: 'westerleigh', name: 'Westerleigh', area: 'Westerleigh, Castleton Corners, and nearby North Shore homes', intro: 'Westerleigh and Castleton Corners include a mix of established houses, renovations, and newer interior updates. We repair cracks, holes, and damaged ceilings; finish new framing; and blend surfaces so the repaired area respects the character of the room instead of looking newly pasted on.', highlights: ['Character-home repair and blending', 'New framing and renovation board', 'Ceiling, wall, and trim-ready finishes'], detail: 'We take extra care around crown molding, baseboards, built-ins, and older plaster transitions. The goal is a repair that disappears after primer and paint, with a written scope that makes the next step easy for the homeowner.' },
 ].map(({ slug, name, area, intro, highlights, detail }) => ({ slug: `drywall-contractor-${slug}`, kind: 'neighborhood' as const, title: `Drywall Contractor in ${name}`, eyebrow: `Serving ${name}`, intro: `${intro} ${detail} We serve ${area} as part of our confirmed Staten Island coverage. Contact us for a site-specific scope rather than assuming every wall needs the same treatment.`, image: serviceImage, highlights, faqs: [{ question: `Do you serve ${name}?`, answer: `Yes. ${name} is one of the Staten Island areas currently listed in our service coverage. We confirm access, scope, and scheduling before booking work.` }, { question: `What drywall work do you handle in ${name}?`, answer: `We handle wall and ceiling repairs, water-damage replacement after the source is fixed, renovation drywall, texture matching, and finish preparation for painting. The right method depends on the existing assembly and the condition we find on site.` }] }));
 
-export const SEO_PAGES = [...pages, ...neighborhoods];
+export const neighborhoodSeoPages: SeoPage[] = neighborhoodDetails.map(({ slug, name, area, intro, highlights, detail }) => ({
+  slug: `drywall-contractor-${slug}`,
+  kind: 'neighborhood',
+  title: `Drywall Contractor in ${name}`,
+  eyebrow: `Serving ${name}`,
+  intro: `${intro} ${detail} We serve ${area} as part of our confirmed Staten Island coverage. Contact us for a site-specific scope rather than assuming every wall needs the same treatment.`,
+  image: serviceImage,
+  highlights,
+  faqs: [
+    { question: `Do you serve ${name}?`, answer: `Yes. ${name} is one of the Staten Island areas currently listed in our service coverage. We confirm access, scope, and scheduling before booking work.` },
+    { question: `What drywall work do you handle in ${name}?`, answer: 'We handle wall and ceiling repairs, water-damage replacement after the source is fixed, renovation drywall, texture matching, and finish preparation for painting. The right method depends on the existing assembly and the condition we find on site.' },
+  ],
+}));
+
+export const SEO_PAGES = [...pages, ...neighborhoodSeoPages];
 export const getSeoPage = (slug: string) => SEO_PAGES.find((page) => page.slug === slug) ?? null;
 export const serviceSeoPages = pages;
-export const neighborhoodSeoPages = neighborhoods;

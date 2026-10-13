@@ -11,6 +11,7 @@ import {
   ArrowUpRight,
 } from 'lucide-react';
 import { SERVICE_TIERS, PORTFOLIO_ITEMS, PORTFOLIO_CATEGORIES, type PortfolioItem } from '@/data/services';
+import { serviceSeoPages } from '@/data/seoPages';
 import { navigateToService, scrollToSection } from '@/lib/navigation';
 
 const ICONS: Record<string, typeof Building2> = {
@@ -148,6 +149,25 @@ export default function Services() {
               </div>
             );
           })}
+        </div>
+
+        <div className="mb-20 rounded-2xl border border-champagne-400/20 bg-champagne-400/5 p-7 lg:p-9">
+          <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between">
+            <div>
+              <p className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-300">More ways we help</p>
+              <h3 className="mt-2 font-display text-2xl font-medium text-white">Local drywall services for every project</h3>
+              <p className="mt-2 max-w-2xl text-sm leading-6 text-steel-400">Explore detailed guidance for repairs, ceilings, basements, soundproofing, popcorn removal, water damage, and commercial interiors across Staten Island.</p>
+            </div>
+            <span className="shrink-0 text-sm text-steel-500">{serviceSeoPages.length} local service guides</span>
+          </div>
+          <div className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
+            {serviceSeoPages.map((page) => (
+              <button key={page.slug} onClick={() => openServiceDetail(page.slug)} className="group flex items-center justify-between rounded-xl border border-white/10 bg-ink-950/40 px-4 py-3 text-left transition-colors hover:border-champagne-400/40 hover:bg-ink-950/70">
+                <span className="text-sm font-medium text-steel-200 group-hover:text-white">{page.title.replace(' in Staten Island', '').replace(' in Staten Island', '')}</span>
+                <ArrowRight className="h-4 w-4 shrink-0 text-champagne-400 transition-transform group-hover:translate-x-1" />
+              </button>
+            ))}
+          </div>
         </div>
 
         {/* Gallery Section */}

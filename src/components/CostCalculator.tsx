@@ -8,6 +8,7 @@ import {
   Phone,
   User,
   MapPin,
+  Mail,
   ArrowRight,
   ArrowLeft,
   Loader2,
@@ -37,8 +38,11 @@ type Step = 1 | 2 | 3 | 4;
 
 interface LeadFormData {
   name: string;
+  email: string;
   phone: string;
   zip: string;
+  projectDetails: string;
+  consent: boolean;
 }
 
 export default function CostCalculator() {
@@ -46,7 +50,7 @@ export default function CostCalculator() {
   const [selectedTier, setSelectedTier] = useState<ServiceTierId>('new-construction');
   const [sqft, setSqft] = useState(1200);
   const [finishGrade, setFinishGrade] = useState<FinishGrade>('level4');
-  const [leadForm, setLeadForm] = useState<LeadFormData>({ name: '', phone: '', zip: '' });
+  const [leadForm, setLeadForm] = useState<LeadFormData>({ name: '', email: '', phone: '', zip: '', projectDetails: '', consent: false });
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
 
@@ -59,19 +63,21 @@ export default function CostCalculator() {
   const handleLeadSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     setSubmitting(true);
-    setTimeout(() => {
+
+    // Replace this demo handoff with the connected contractor's CRM/webhook endpoint.
+    window.setTimeout(() => {
       setSubmitting(false);
       setSubmitted(true);
-    }, 1200);
+    }, 700);
   };
 
   const zipValid = ZIP_PREFIXES.some((p) => leadForm.zip.startsWith(p.slice(0, 3)));
-  const formValid = leadForm.name.trim().length > 1 && leadForm.phone.trim().length >= 10 && leadForm.zip.trim().length >= 5;
+  const formValid = leadForm.name.trim().length > 1 && leadForm.email.includes('@') && leadForm.phone.trim().length >= 10 && leadForm.zip.trim().length >= 5 && zipValid && leadForm.consent;
 
   const reset = () => {
     setSubmitted(false);
     setStep(1);
-    setLeadForm({ name: '', phone: '', zip: '' });
+    setLeadForm({ name: '', email: '', phone: '', zip: '', projectDetails: '', consent: false });
   };
 
   return (
@@ -336,6 +342,16 @@ export default function CostCalculator() {
                           className="w-full bg-transparent text-sm text-white placeholder:text-steel-500 focus:outline-none"
                         />
                       </FormField>
+                      <FormField icon={Mail} label="Email Address">
+                        <input
+                          type="email"
+                          required
+                          value={leadForm.email}
+                          onChange={(e) => setLeadForm({ ...leadForm, email: e.target.value })}
+                          placeholder="you@example.com"
+                          className="w-full bg-transparent text-sm text-white placeholder:text-steel-500 focus:outline-none"
+                        />
+                      </FormField>
                       <FormField icon={Phone} label="Phone Number">
                         <input
                           type="tel"
@@ -359,6 +375,30 @@ export default function CostCalculator() {
                       {leadForm.zip.length >= 3 && !zipValid && (
                         <p className="text-xs text-red-400">Please enter a valid Staten Island ZIP code (103xx).</p>
                       )}
+                      <div>
+                        <label htmlFor="project-details" className="block text-xs font-medium text-steel-300 mb-1.5">Project Details <span className="text-steel-500">(optional)</span></label>
+                        <textarea
+                          id="project-details"
+                          rows={3}
+                          value={leadForm.projectDetails}
+                          onChange={(e) => setLeadForm({ ...leadForm, projectDetails: e.target.value })}
+                          placeholder="Tell us what needs repair or finishing..."
+                          className="w-full resize-none rounded-lg border border-white/10 bg-ink-900/50 px-4 py-3 text-sm text-white placeholder:text-steel-500 focus:border-champagne-400/40 focus:outline-none"
+                        />
+                      </div>
+                      <label className="flex items-start gap-3 rounded-lg border border-white/10 bg-ink-900/40 p-3 text-xs leading-relaxed text-steel-300">
+                        <input
+                          type="checkbox"
+                          required
+                          checked={leadForm.consent}
+                          onChange={(e) => setLeadForm({ ...leadForm, consent: e.target.checked })}
+                          className="mt-0.5 accent-champagne-400"
+                        />
+                        <span>I agree that this marketing website may share my information with an independent Staten Island drywall contractor who may contact me about this request. I understand this site is not the contractor. See our <a href="#privacy" className="text-champagne-300 underline underline-offset-2">Privacy Policy</a>.</span>
+                      </label>
+                      <div className="rounded-lg border border-champagne-400/15 bg-champagne-400/5 p-3 text-xs leading-relaxed text-steel-300">
+                        <strong className="text-champagne-200">Contractor disclosure:</strong> We generate and route leads; we do not quote, perform, supervise, or guarantee construction work. The matched contractor is responsible for credentials, insurance, pricing, contracts, and workmanship. Until a contractor is connected, submissions remain in this site&apos;s review queue and are not represented as booked jobs.
+                      </div>
                       <button
                         type="submit"
                         disabled={!formValid || submitting}
@@ -399,7 +439,7 @@ export default function CostCalculator() {
                   </div>
                   <h3 className="font-display text-2xl font-medium text-white mb-2">Request Received</h3>
                   <p className="text-sm text-steel-400 max-w-md">
-                    Thank you, {leadForm.name.split(' ')[0]}. Your estimate of <span className="text-champagne-300 font-semibold">{formatCurrency(breakdown.total)}</span> for {tier.shortName} has been logged. Our team will call you within 24 hours to schedule your on-site consultation.
+                    Thank you, {leadForm.name.split(' ')[0]}. Your request for an estimated <span className="text-champagne-300 font-semibold">{formatCurrency(breakdown.total)}</span> {tier.shortName.toLowerCase()} project has been recorded for contractor review. Once a contractor is connected to this site, approved leads will be routed to that independent provider; no construction appointment is made by this website.
                   </p>
                   <button
                     onClick={reset}

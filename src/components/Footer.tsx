@@ -99,6 +99,12 @@ export default function Footer() {
           </div>
         </div>
 
+        <section id="privacy" className="mb-10 rounded-xl border border-white/10 bg-white/[0.03] p-5 text-xs leading-relaxed text-steel-400">
+          <h2 className="mb-2 text-sm font-semibold text-white">Privacy Policy</h2>
+          <p>When you request a quote, this marketing website collects the information you submit so we can review and route your request to an independent contractor who may serve your area. We do not sell your information. The contractor may contact you by phone, text, or email about your request.</p>
+          <p className="mt-2">You can ask us to correct or delete your submission by emailing <a href="mailto:info@statenislanddrywall.com" className="text-champagne-300 underline underline-offset-2">info@statenislanddrywall.com</a>. Do not submit sensitive personal information through this form.</p>
+        </section>
+
         {/* Bottom bar */}
         <div className="border-t border-white/5 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <p className="text-xs text-steel-500">

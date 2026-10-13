@@ -8,8 +8,10 @@ import Neighborhoods from '@/components/Neighborhoods';
 import Footer from '@/components/Footer';
 import MobileConversionBar from '@/components/MobileConversionBar';
 import ServiceDetailPage from '@/components/ServiceDetailPage';
+import SeoLandingPage from '@/components/SeoLandingPage';
 import PhotoBanner from '@/components/PhotoBanner';
 import { SERVICE_TIERS, LUXURY_BANNERS } from '@/data/services';
+import { getSeoPage } from '@/data/seoPages';
 import { getCurrentServiceSlug } from '@/lib/navigation';
 
 export default function App() {
@@ -24,6 +26,7 @@ export default function App() {
   const activeTier = activeSlug
     ? SERVICE_TIERS.find((t) => t.slug === activeSlug) ?? null
     : null;
+  const activeSeoPage = activeSlug ? getSeoPage(activeSlug) : null;
 
   const topBanner = LUXURY_BANNERS.find((b) => b.position === 'top')!;
   const middleBanner = LUXURY_BANNERS.find((b) => b.position === 'middle')!;
@@ -35,6 +38,8 @@ export default function App() {
 
       {activeTier ? (
         <ServiceDetailPage tier={activeTier} />
+      ) : activeSeoPage ? (
+        <SeoLandingPage page={activeSeoPage} />
       ) : (
         <main>
           <Hero />

@@ -1,6 +1,7 @@
 import { MapPin, Navigation, Phone, ArrowRight } from 'lucide-react';
 import { NEIGHBORHOOD_REGIONS } from '@/data/services';
-import { scrollToSection } from '@/lib/navigation';
+import { neighborhoodSeoPages } from '@/data/seoPages';
+import { navigateToService, scrollToSection } from '@/lib/navigation';
 
 export default function Neighborhoods() {
   return (
@@ -38,16 +39,14 @@ export default function Neighborhoods() {
 
               <div className="space-y-1.5">
                 {region.neighborhoods.map((n) => (
-                  <div
+                  <button
                     key={n.name}
-                    className="flex items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-4 py-2.5 transition-all hover:border-champagne-400/20 hover:bg-champagne-400/5"
+                    onClick={() => navigateToService(neighborhoodSeoPages.find((page) => page.title.endsWith(`in ${n.name}`))?.slug ?? '')}
+                    className="flex w-full items-center justify-between rounded-lg border border-white/5 bg-white/[0.02] px-4 py-2.5 text-left transition-all hover:border-champagne-400/20 hover:bg-champagne-400/5"
                   >
-                    <div className="flex items-center gap-2">
-                      <div className="h-1.5 w-1.5 rounded-full bg-champagne-400/60" />
-                      <span className="text-sm font-medium text-steel-200">{n.name}</span>
-                    </div>
-                    <span className="text-xs text-steel-500 font-mono">{n.zipCodes.join(', ')}</span>
-                  </div>
+                    <span className="flex items-center gap-2"><span className="h-1.5 w-1.5 rounded-full bg-champagne-400/60" /><span className="text-sm font-medium text-steel-200">{n.name}</span></span>
+                    <span className="text-xs font-mono text-steel-500">{n.zipCodes.join(', ')}</span>
+                  </button>
                 ))}
               </div>
             </div>

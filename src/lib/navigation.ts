@@ -15,7 +15,7 @@ export function navigateToHome() {
 }
 
 export function getCurrentServiceSlug(): string | null {
-  const match = window.location.pathname.match(/^\/services\/(.+)$/);
+  const match = window.location.pathname.match(/^\/(?:services|areas)\/(.+)$/);
   return match ? match[1] : null;
 }
 

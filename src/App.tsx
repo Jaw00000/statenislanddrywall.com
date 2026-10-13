@@ -10,6 +10,7 @@ import MobileConversionBar from '@/components/MobileConversionBar';
 import ServiceDetailPage from '@/components/ServiceDetailPage';
 import SeoLandingPage from '@/components/SeoLandingPage';
 import PhotoBanner from '@/components/PhotoBanner';
+import GeneratedSamplesPage from '@/components/GeneratedSamplesPage';
 import { SERVICE_TIERS, LUXURY_BANNERS } from '@/data/services';
 import { getSeoPage } from '@/data/seoPages';
 import { getCurrentServiceSlug } from '@/lib/navigation';
@@ -23,6 +24,7 @@ export default function App() {
     return () => window.removeEventListener('popstate', onPop);
   }, []);
 
+  const isSamplesPreview = window.location.pathname === '/generated-samples';
   const activeTier = activeSlug
     ? SERVICE_TIERS.find((t) => t.slug === activeSlug) ?? null
     : null;
@@ -36,7 +38,9 @@ export default function App() {
     <div className="min-h-screen bg-ink-950 text-white antialiased pb-16 sm:pb-0">
       <Header />
 
-      {activeTier ? (
+      {isSamplesPreview ? (
+        <GeneratedSamplesPage />
+      ) : activeTier ? (
         <ServiceDetailPage tier={activeTier} />
       ) : activeSeoPage ? (
         <SeoLandingPage page={activeSeoPage} />

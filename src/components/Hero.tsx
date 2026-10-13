@@ -12,6 +12,7 @@ import {
   ArrowRight,
   Loader2,
   CircleCheckBig,
+  ShieldCheck,
   Send,
 } from 'lucide-react';
 

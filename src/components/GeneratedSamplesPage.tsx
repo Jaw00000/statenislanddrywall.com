@@ -1,25 +1,33 @@
-const samples = [
+const sampleGroups = [
   {
     title: 'Boarding & Hanging',
-    image: '/generated-samples/boarding-hanging-sample.png',
-    description: 'Concept sample showing gypsum board placement, clean fastening, and a prepared surface ready for finishing.',
+    description: 'Concept comparisons showing framing, gypsum board placement, fastening, and finish readiness.',
+    prefix: 'boarding',
   },
   {
     title: 'Level 5 Skim Coat',
-    image: '/generated-samples/level-five-skim-sample.png',
-    description: 'Concept sample showing a smooth skim-coat process and the even surface preparation expected before primer and paint.',
+    description: 'Concept comparisons showing surface correction, skim-coat application, and paint-ready smoothness.',
+    prefix: 'skim',
   },
   {
-    title: 'Soundproofing',
-    image: '/generated-samples/soundproofing-sample.png',
-    description: 'Concept sample showing an acoustic wall assembly with insulation, layered board, and sealed perimeter details.',
+    title: 'Soundproofing & Fire-Rated Systems',
+    description: 'Concept comparisons showing insulation, isolation layers, sealed assemblies, and finished wall surfaces.',
+    prefix: 'soundproofing',
   },
   {
     title: 'Patch & Restoration',
-    image: '/generated-samples/patch-restoration-sample.png',
-    description: 'Concept sample showing careful patch repair, feathered compound, and a blended finish ready for decoration.',
+    description: 'Concept comparisons showing damage conditions, patching, water-damage replacement, and blended repairs.',
+    prefix: 'restoration',
   },
 ];
+
+const samples = sampleGroups.flatMap((group) =>
+  Array.from({ length: 5 }, (_, index) => ({
+    title: `${group.title} — Comparison ${index + 1}`,
+    image: `/generated-samples/${group.prefix}-${String(index + 1).padStart(2, '0')}-before-after.png`,
+    description: group.description,
+  })),
+);
 
 export default function GeneratedSamplesPage() {
   return (

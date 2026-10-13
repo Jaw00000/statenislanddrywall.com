@@ -369,7 +369,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Mirror-Smooth Level 5 Living Room',
     category: 'level5',
     categoryLabel: 'Level 5 Skim Coat',
-    description: 'Full Level 5 plaster-grade finish in a Todt Hill estate. Raking-light tested — zero visible imperfections.',
+    description: 'Full Level 5 plaster-grade finish with careful surface preparation and raking-light testing to reveal and correct visible imperfections.',
     image: 'https://images.pexels.com/photos/6473966/pexels-photo-6473966.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
@@ -377,7 +377,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Commercial Metal Stud Framing',
     category: 'framing',
     categoryLabel: 'Metal Framing',
-    description: '25-gauge metal stud framing for a 4,000 sq ft commercial space in St. George. Fire-rated assembly.',
+    description: '25-gauge metal stud framing with precise layout, secure fastening, and fire-rated assembly coordination for commercial interiors.',
     image: 'https://images.pexels.com/photos/35496414/pexels-photo-35496414.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
@@ -385,7 +385,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Acoustic Soundproof Core Layers',
     category: 'soundproofing',
     categoryLabel: 'Soundproofing',
-    description: 'Resilient channel + sound-damped drywall assembly achieving STC 54 in a New Dorp home theater.',
+    description: 'Resilient channel and sound-damped drywall assembly designed to reduce sound transfer and support a quieter finished room.',
     image: 'https://images.pexels.com/photos/6124239/pexels-photo-6124239.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
@@ -393,7 +393,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Water Damage Restoration',
     category: 'restoration',
     categoryLabel: 'Restoration',
-    description: 'Surgical removal and seamless blend of water-damaged ceiling sections in a Great Kills residence.',
+    description: 'Careful removal and seamless blending of water-damaged ceiling sections after the affected area is dry and ready for restoration.',
     image: 'https://images.pexels.com/photos/36050822/pexels-photo-36050822.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
@@ -409,7 +409,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Precision Drywall Installation',
     category: 'framing',
     categoryLabel: 'Boarding & Hanging',
-    description: 'Screw-fastened boarding with laser-leveled alignment in a Tottenville new construction build.',
+    description: 'Screw-fastened drywall boarding with laser-leveled alignment, consistent seams, and a clean surface ready for finishing.',
     image: 'https://images.pexels.com/photos/33405084/pexels-photo-33405084.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
@@ -417,7 +417,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Acoustic Insulation Installation',
     category: 'soundproofing',
     categoryLabel: 'Soundproofing',
-    description: 'Mineral wool sound isolation between resilient channels in a Lighthouse Hill home theater build.',
+    description: 'Mineral wool sound isolation installed between resilient channels to improve acoustic separation and reduce vibration transfer.',
     image: 'https://images.pexels.com/photos/5511085/pexels-photo-5511085.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
   {
@@ -425,7 +425,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     title: 'Crack Repair & Wall Restoration',
     category: 'restoration',
     categoryLabel: 'Restoration',
-    description: 'Structural crack repair and re-plastering in a historic Stapleton loft. Texture-matched to original plaster.',
+    description: 'Structural crack repair and re-plastering with texture matched to the surrounding plaster for a consistent, durable finish.',
     image: 'https://images.pexels.com/photos/6473982/pexels-photo-6473982.jpeg?auto=compress&cs=tinysrgb&h=650&w=940',
   },
 ];
@@ -465,7 +465,7 @@ export const LUXURY_BANNERS: LuxuryBanner[] = [
     id: 'banner-lower',
     image: 'https://images.pexels.com/photos/8143678/pexels-photo-8143678.jpeg?auto=compress&cs=tinysrgb&h=1080&w=1920',
     title: 'Staten Island\u2019s Finest Drywall Craftsmanship.',
-    subtitle: 'From Todt Hill estates to St. George commercial build-outs — we deliver.',
+    subtitle: 'From residential repairs to commercial build-outs — we deliver careful preparation and durable finishes.',
     position: 'lower',
   },
 ];

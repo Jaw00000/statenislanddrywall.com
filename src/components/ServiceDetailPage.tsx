@@ -17,7 +17,7 @@ import {
   Images,
 } from 'lucide-react';
 import { SERVICE_TIERS, type ServiceTier } from '@/data/services';
-import { navigateToHome, navigateToService, scrollToSection } from '@/lib/navigation';
+import { navigateBack, navigateToHome, navigateToService, scrollToSection } from '@/lib/navigation';
 
 const ICONS: Record<string, typeof Building2> = {
   building: Building2,
@@ -58,11 +58,11 @@ export default function ServiceDetailPage({ tier }: { tier: ServiceTier }) {
 
         <div className="relative z-10 mx-auto max-w-5xl px-5 lg:px-8 h-full flex flex-col justify-end pb-12">
           <button
-            onClick={navigateToHome}
+            onClick={() => navigateBack()}
             className="flex items-center gap-2 text-sm font-medium text-steel-300 hover:text-champagne-300 transition-colors mb-6 w-fit"
           >
             <ArrowLeft className="h-4 w-4" />
-            All Services
+            Back
           </button>
 
           <div className="flex items-center gap-3 mb-4">

@@ -5,6 +5,15 @@ export function navigateToService(slug: string) {
   window.dispatchEvent(new PopStateEvent('popstate'));
 }
 
+export function navigateBack(fallback = '/') {
+  if (window.history.length > 1 && document.referrer) {
+    window.history.back();
+  } else if (window.location.pathname !== fallback) {
+    window.history.pushState({}, '', fallback);
+    window.dispatchEvent(new PopStateEvent('popstate'));
+  }
+}
+
 export function navigateToHome() {
   if (window.location.pathname !== '/') {
     window.history.pushState({}, '', '/');

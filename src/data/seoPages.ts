@@ -7,6 +7,8 @@ export interface SeoPage {
   eyebrow: string;
   intro: string;
   image: string;
+  photos?: { url: string; alt: string }[];
+  keywords?: string[];
   highlights: string[];
   faqs: { question: string; answer: string }[];
 }
@@ -51,6 +53,19 @@ export const neighborhoodSeoPages: SeoPage[] = neighborhoodDetails.map(({ slug, 
   ],
 }));
 
-export const SEO_PAGES = [...pages, ...neighborhoodSeoPages];
+const servicePhotoSets = [
+  { url: serviceImage, label: 'surface preparation and drywall installation' },
+  { url: repairImage, label: 'careful repair, finishing, and blending' },
+  { url: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=1200', label: 'clean, paint-ready interior finish' },
+];
+
+const enrichPage = (page: SeoPage, index: number): SeoPage => ({
+  ...page,
+  photos: servicePhotoSets.map((photo) => ({ url: photo.url, alt: `${page.title}: ${photo.label}` })),
+  keywords: [page.title, 'drywall installation', 'drywall repair', 'paint-ready finish', 'Staten Island drywall'],
+});
+
+export const serviceSeoPages = pages.map(enrichPage);
+export const neighborhoodSeoPagesWithAssets = neighborhoodSeoPages.map(enrichPage);
+export const SEO_PAGES = [...serviceSeoPages, ...neighborhoodSeoPagesWithAssets];
 export const getSeoPage = (slug: string) => SEO_PAGES.find((page) => page.slug === slug) ?? null;
-export const serviceSeoPages = pages;

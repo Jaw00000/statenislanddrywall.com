@@ -162,10 +162,10 @@ export default function Services() {
           </div>
           <div className="mt-6 grid gap-2 sm:grid-cols-2 lg:grid-cols-4">
             {serviceSeoPages.map((page) => (
-              <button key={page.slug} onClick={() => openServiceDetail(page.slug)} className="group flex items-center justify-between rounded-xl border border-white/10 bg-ink-950/40 px-4 py-3 text-left transition-colors hover:border-champagne-400/40 hover:bg-ink-950/70">
+              <a key={page.slug} href={`/areas/${page.slug}`} onClick={(event) => { event.preventDefault(); openServiceDetail(page.slug); }} className="group flex items-center justify-between rounded-xl border border-white/10 bg-ink-950/40 px-4 py-3 text-left transition-colors hover:border-champagne-400/40 hover:bg-ink-950/70">
                 <span className="text-sm font-medium text-steel-200 group-hover:text-white">{page.title.replace(' in Staten Island', '').replace(' in Staten Island', '')}</span>
                 <ArrowRight className="h-4 w-4 shrink-0 text-champagne-400 transition-transform group-hover:translate-x-1" />
-              </button>
+              </a>
             ))}
           </div>
         </div>

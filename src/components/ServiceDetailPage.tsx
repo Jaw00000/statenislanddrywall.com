@@ -138,7 +138,7 @@ export default function ServiceDetailPage({ tier }: { tier: ServiceTier }) {
             </div>
           </div>
 
-          <div className="mb-10 grid gap-4 sm:grid-cols-2"><img src={illustrativeGallery[2].url} alt={illustrativeGallery[2].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover" /><img src={illustrativeGallery[3].url} alt={illustrativeGallery[3].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover" /></div>
+          <div className="mb-10 grid gap-4 sm:grid-cols-2"><img src={illustrativeGallery[2].url} alt={illustrativeGallery[2].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover contrast-125 saturate-110" /><img src={illustrativeGallery[3].url} alt={illustrativeGallery[3].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover contrast-125 saturate-110" /><img src={illustrativeGallery[4].url} alt={illustrativeGallery[4].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover contrast-125 saturate-110 sm:col-span-2 sm:aspect-[16/7]" /></div>
 
           {/* Substrate Requirements + Finish Standards */}
           <div className="grid lg:grid-cols-2 gap-6 mb-10">

@@ -53,19 +53,28 @@ export const neighborhoodSeoPages: SeoPage[] = neighborhoodDetails.map(({ slug, 
   ],
 }));
 
-const servicePhotoSets = [
-  { url: serviceImage, label: 'surface preparation and drywall installation' },
-  { url: repairImage, label: 'careful repair, finishing, and blending' },
-  { url: 'https://images.pexels.com/photos/5691622/pexels-photo-5691622.jpeg?auto=compress&cs=tinysrgb&w=1200', label: 'clean, paint-ready interior finish' },
-];
+const photoSets: Record<string, { url: string; label: string }[]> = {
+  boarding: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/boarding-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `boarding and hanging process comparison ${index + 1}` })),
+  skim: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/skim-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `skim coating and Level 5 finish comparison ${index + 1}` })),
+  soundproofing: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/soundproofing-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `soundproofing assembly comparison ${index + 1}` })),
+  restoration: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/restoration-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `repair and restoration comparison ${index + 1}` })),
+};
 
-const enrichPage = (page: SeoPage, index: number): SeoPage => ({
+const photoSetForPage = (page: SeoPage) => {
+  const slug = page.slug;
+  if (slug.includes('soundproofing')) return photoSets.soundproofing;
+  if (slug.includes('level-5') || slug.includes('popcorn')) return photoSets.skim;
+  if (slug.includes('repair') || slug.includes('water-damage') || slug.includes('ceiling') || slug.includes('basement') || slug.includes('commercial')) return photoSets.restoration;
+  return photoSets.boarding;
+};
+
+const enrichPage = (page: SeoPage): SeoPage => ({
   ...page,
-  photos: servicePhotoSets.map((photo) => ({ url: photo.url, alt: `${page.title}: ${photo.label}` })),
+  photos: photoSetForPage(page).map((photo) => ({ url: photo.url, alt: `${page.title}: ${photo.label}` })),
   keywords: [page.title, 'drywall installation', 'drywall repair', 'paint-ready finish', 'Staten Island drywall'],
 });
 
-export const serviceSeoPages = pages.map(enrichPage);
-export const neighborhoodSeoPagesWithAssets = neighborhoodSeoPages.map(enrichPage);
+export const serviceSeoPages = pages.map((page) => enrichPage(page));
+export const neighborhoodSeoPagesWithAssets = neighborhoodSeoPages.map((page) => enrichPage(page));
 export const SEO_PAGES = [...serviceSeoPages, ...neighborhoodSeoPagesWithAssets];
 export const getSeoPage = (slug: string) => SEO_PAGES.find((page) => page.slug === slug) ?? null;

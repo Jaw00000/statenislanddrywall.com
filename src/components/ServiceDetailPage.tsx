@@ -48,6 +48,12 @@ export default function ServiceDetailPage({ tier }: { tier: ServiceTier }) {
     }, 150);
   };
 
+  const galleryPrefix = tier.id === 'new-construction' ? 'boarding' : tier.id === 'level5-skim' ? 'skim' : tier.id === 'acoustic-soundproofing' ? 'soundproofing' : 'restoration';
+  const illustrativeGallery = Array.from({ length: 5 }, (_, index) => ({
+    url: `/generated-samples/${galleryPrefix}-${String(index + 1).padStart(2, '0')}-before-after.png`,
+    caption: `${tier.shortName} process comparison ${index + 1} — generated visual illustration, not a completed contractor project`,
+  }));
+
   return (
     <div className="min-h-screen bg-ink-950 pt-20 animate-fade-in">
       {/* Hero */}
@@ -99,6 +105,7 @@ export default function ServiceDetailPage({ tier }: { tier: ServiceTier }) {
       {/* Body */}
       <section className="relative py-16 lg:py-24">
         <div className="mx-auto max-w-5xl px-5 lg:px-8">
+          <section className="mb-10" aria-labelledby="visual-process"><div className="mb-5 flex items-end justify-between gap-4"><div><p className="text-xs font-semibold uppercase tracking-[0.2em] text-champagne-300">Visual process guide</p><h2 id="visual-process" className="mt-2 font-display text-3xl font-medium text-white">Before, during, and finished</h2></div><span className="hidden text-xs text-steel-500 sm:block">Illustrative examples</span></div><div className="grid gap-4 sm:grid-cols-2"><img src={illustrativeGallery[0].url} alt={illustrativeGallery[0].caption} className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover" /><img src={illustrativeGallery[1].url} alt={illustrativeGallery[1].caption} className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover" /></div></section>
           {/* Description */}
           <div className="glass rounded-2xl p-7 lg:p-10 mb-10">
             <h2 className="font-display text-2xl font-medium text-white mb-4">Overview</h2>
@@ -130,6 +137,8 @@ export default function ServiceDetailPage({ tier }: { tier: ServiceTier }) {
               ))}
             </div>
           </div>
+
+          <div className="mb-10 grid gap-4 sm:grid-cols-2"><img src={illustrativeGallery[2].url} alt={illustrativeGallery[2].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover" /><img src={illustrativeGallery[3].url} alt={illustrativeGallery[3].caption} loading="lazy" className="aspect-[4/3] w-full rounded-xl border border-white/10 object-cover" /></div>
 
           {/* Substrate Requirements + Finish Standards */}
           <div className="grid lg:grid-cols-2 gap-6 mb-10">

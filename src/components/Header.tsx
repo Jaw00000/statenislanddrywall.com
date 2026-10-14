@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Menu, X, Hammer, BadgeCheck, Phone, ArrowRight } from 'lucide-react';
+import { Menu, X, Hammer, BadgeCheck, Phone, ArrowRight, ArrowLeft } from 'lucide-react';
 import { scrollToSection } from '@/lib/navigation';
 
 const NAV_LINKS = [
@@ -25,6 +25,13 @@ export default function Header() {
     scrollToSection(href);
   };
 
+  const handleBack = () => {
+    if (window.history.length > 1) window.history.back();
+    else window.location.assign('/');
+  };
+
+  const isSubpage = window.location.pathname !== '/';
+
   return (
     <>
       <header
@@ -34,6 +41,17 @@ export default function Header() {
       >
         <div className="mx-auto max-w-7xl px-5 lg:px-8">
           <div className="flex h-20 items-center justify-between gap-4">
+            {isSubpage && (
+              <button
+                type="button"
+                onClick={handleBack}
+                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg border border-white/10 bg-white/5 text-steel-200 transition hover:border-champagne-400/40 hover:text-champagne-300"
+                aria-label="Go back to the previous page"
+                title="Back"
+              >
+                <ArrowLeft className="h-4 w-4" />
+              </button>
+            )}
             {/* Logo */}
             <div className="flex items-center gap-3 shrink-0">
               <div className="flex h-11 w-11 items-center justify-center rounded-lg border border-champagne-400/30 bg-ink-800/80 glow-gold">

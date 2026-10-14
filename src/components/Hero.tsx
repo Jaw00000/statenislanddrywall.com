@@ -91,7 +91,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-1/3 right-1/3 h-px gold-line opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8 pt-28 pb-20 w-full">
-        <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-10 items-start">
+        <div className="grid md:grid-cols-[minmax(0,1fr)_280px] gap-6 lg:gap-8 items-start">
           {/* Left: hero content */}
           <div className="max-w-3xl">
             {/* Badge row */}

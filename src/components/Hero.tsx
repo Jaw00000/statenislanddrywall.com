@@ -91,7 +91,7 @@ export default function Hero() {
       <div className="absolute bottom-0 left-1/3 right-1/3 h-px gold-line opacity-20" />
 
       <div className="relative z-10 mx-auto max-w-7xl px-5 lg:px-8 pt-28 pb-20 w-full">
-        <div className="grid lg:grid-cols-[1fr_400px] gap-10 lg:gap-12 items-start">
+        <div className="grid lg:grid-cols-[minmax(0,1fr)_320px] gap-8 lg:gap-10 items-start">
           {/* Left: hero content */}
           <div className="max-w-3xl">
             {/* Badge row */}
@@ -157,7 +157,7 @@ export default function Hero() {
 
           {/* Right: compact quote form */}
           <div id="quote" className="animate-fade-up" style={{ animationDelay: '0.3s' }}>
-            <div className="rounded-2xl border border-champagne-400/20 bg-white p-5 shadow-2xl">
+            <div className="rounded-2xl border border-champagne-400/20 bg-white p-4 shadow-2xl">
               {submitted ? (
                 <div className="flex flex-col items-center justify-center py-10 text-center">
                   <div className="flex h-14 w-14 items-center justify-center rounded-full bg-champagne-400/15 mb-4 glow-gold">
@@ -183,7 +183,7 @@ export default function Hero() {
                     <h2 className="font-display text-lg font-medium text-ink-950">Get a Free Quote</h2>
                     <p className="text-xs text-steel-500 mt-0.5">We'll call you within 24 hours</p>
                   </div>
-                  <form onSubmit={handleSubmit} className="space-y-3">
+                  <form onSubmit={handleSubmit} className="space-y-2">
                     <CompactField icon={User}>
                       <input
                         type="text"
@@ -230,7 +230,7 @@ export default function Hero() {
                       <p className="text-xs text-red-400 -mt-1">Please enter a valid Staten Island ZIP (103xx).</p>
                     )}
 
-                    <div className="flex items-center gap-3 rounded-lg border border-steel-200 bg-steel-50 px-4 py-2.5 focus-within:border-champagne-400/40 transition-colors">
+                    <div className="flex items-center gap-3 rounded-lg border border-steel-200 bg-steel-50 px-3 py-2 focus-within:border-champagne-400/40 transition-colors">
                       <Building2 className="h-4 w-4 text-steel-400 shrink-0" strokeWidth={1.5} />
                       <select
                         value={form.serviceType}
@@ -248,14 +248,14 @@ export default function Hero() {
                       value={form.message}
                       onChange={(e) => setForm({ ...form, message: e.target.value })}
                       placeholder="Project Details (optional)"
-                      rows={2}
-                      className="w-full rounded-lg border border-steel-200 bg-steel-50 px-4 py-2.5 text-sm text-ink-950 placeholder:text-steel-400 focus:outline-none focus:border-champagne-400/40 transition-colors resize-none"
+                      rows={1}
+                      className="w-full rounded-lg border border-steel-200 bg-steel-50 px-3 py-2 text-sm text-ink-950 placeholder:text-steel-400 focus:outline-none focus:border-champagne-400/40 transition-colors resize-none"
                     />
 
                     <button
                       type="submit"
                       disabled={!formValid || submitting}
-                      className="w-full flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-champagne-400 to-champagne-500 px-5 py-3 text-sm font-bold text-ink-950 transition-all hover:glow-gold-strong disabled:opacity-40 disabled:cursor-not-allowed"
+                      className="w-full flex items-center justify-center gap-2 rounded-full bg-gradient-to-r from-champagne-400 to-champagne-500 px-4 py-2.5 text-sm font-bold text-ink-950 transition-all hover:glow-gold-strong disabled:opacity-40 disabled:cursor-not-allowed"
                     >
                       {submitting ? (
                         <>
@@ -296,7 +296,7 @@ function CompactField({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex items-center gap-3 rounded-lg border border-steel-200 bg-steel-50 px-4 py-2.5 focus-within:border-champagne-400/40 transition-colors">
+    <div className="flex items-center gap-3 rounded-lg border border-steel-200 bg-steel-50 px-3 py-2 focus-within:border-champagne-400/40 transition-colors">
       <Icon className="h-4 w-4 text-steel-400 shrink-0" strokeWidth={1.5} />
       {children}
     </div>

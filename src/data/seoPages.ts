@@ -53,18 +53,36 @@ export const neighborhoodSeoPages: SeoPage[] = neighborhoodDetails.map(({ slug, 
   ],
 }));
 
+const phaseSet = (prefix: string, service: string) => [
+  { url: `/generated-samples/${prefix}-damaged.png`, label: `${service}: damaged condition before work` },
+  { url: `/generated-samples/${prefix}-fixing.png`, label: `${service}: controlled work in progress` },
+  { url: `/generated-samples/${prefix}-finished.png`, label: `${service}: completely restored, paint-ready finished result` },
+];
+
 const photoSets: Record<string, { url: string; label: string }[]> = {
   boarding: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/boarding-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `boarding and hanging process comparison ${index + 1}` })),
   skim: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/skim-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `skim coating and Level 5 finish comparison ${index + 1}` })),
-  soundproofing: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/soundproofing-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `soundproofing assembly comparison ${index + 1}` })),
+  soundproofing: phaseSet('soundproofing', 'Soundproofing'),
   restoration: Array.from({ length: 5 }, (_, index) => ({ url: `/generated-samples/restoration-${String(index + 1).padStart(2, '0')}-before-after.png`, label: `repair and restoration comparison ${index + 1}` })),
+  repair: phaseSet('repair', 'Drywall repair'),
+  waterDamage: phaseSet('water-damage', 'Water damage drywall replacement'),
+  ceiling: phaseSet('ceiling', 'Ceiling repair'),
+  popcorn: phaseSet('popcorn', 'Popcorn ceiling removal'),
+  basement: phaseSet('basement', 'Basement finishing'),
+  commercial: phaseSet('commercial', 'Commercial drywall'),
 };
 
 const photoSetForPage = (page: SeoPage) => {
   const slug = page.slug;
+  if (slug.includes('water-damage')) return photoSets.waterDamage;
+  if (slug.includes('ceiling-repair')) return photoSets.ceiling;
   if (slug.includes('soundproofing')) return photoSets.soundproofing;
-  if (slug.includes('level-5') || slug.includes('popcorn')) return photoSets.skim;
-  if (slug.includes('repair') || slug.includes('water-damage') || slug.includes('ceiling') || slug.includes('basement') || slug.includes('commercial')) return photoSets.restoration;
+  if (slug.includes('popcorn')) return photoSets.popcorn;
+  if (slug.includes('basement')) return photoSets.basement;
+  if (slug.includes('commercial')) return photoSets.commercial;
+  if (slug.includes('drywall-repair')) return photoSets.repair;
+  if (slug.includes('level-5')) return photoSets.skim;
+  if (slug.includes('repair')) return photoSets.restoration;
   return photoSets.boarding;
 };
 
